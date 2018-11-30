@@ -70,7 +70,7 @@ Problems known as **NP-hard** are usually better tackled with heuristics.
 ##### NP-Hardness
 The NP-hardness (non-deterministic polynomial time hardness) is a property of an optimisation problem. A problem is categorised as NP-hard where there is no algorithm that is capable of solving it in polynomial time (`O(n^k)`) on a _non-deterministic Turing machine_.
 
-![https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/P_np_np-complete_np-hard.svg/800px-P_np_np-complete_np-hard.svg.png](NP-Hardness)
+![NP-Hardness](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/P_np_np-complete_np-hard.svg/800px-P_np_np-complete_np-hard.svg.png)
 
 - `P` ─ set of problems that can be solved in polynomial time by a Turing machine
 - `NP` ─ set of problems that can be solved in polynomial time by a nondeterministic Turing machine
@@ -129,7 +129,7 @@ Uniformed search algorithms can be either breadth-first or depth-first.
 ##### Breadth-first algorithms
 Aims to expand the shallowest unexpanded node.
 
-![http://how2examples.com/artificial-intelligence/images/Breadth-First-Search.gif](breadth-first)
+![breadth-first](http://how2examples.com/artificial-intelligence/images/Breadth-First-Search.gif)
 
 - Complete: Yes (if b is finite)
 - Time:  O(b^(d+1))
@@ -139,7 +139,7 @@ Aims to expand the shallowest unexpanded node.
 ##### Depth-first algorithms
 Aims to expand the deepest unexpanded node.
 
-![http://how2examples.com/artificial-intelligence/images/Depth-First-Search.gif](depth-first)
+![depth-first](http://how2examples.com/artificial-intelligence/images/Depth-First-Search.gif)
 
 - Complete:
     - YES in finite spaces
