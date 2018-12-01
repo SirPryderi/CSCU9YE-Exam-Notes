@@ -63,7 +63,7 @@ In mathematics and computer science an **optimisation problem** is the problem o
 Optimisation problems can be, depending on their variables, **continuous** and **discrete**.
 
 #### Heuristic Optimisation
-A heuristic is a technique designed for solving a problem quickly (**rule of thumb**), where the traditional approach would be too slow, or wouldn't find a complete solution.
+A heuristic is a technique designed for solving a problem quickly (**rule of thumb**), using problem-specific knowledge, where the traditional approach would be too slow, or wouldn't find a complete solution.
 
 Problems known as **NP-hard** are usually better tackled with heuristics.
 
@@ -87,7 +87,9 @@ ___________________________________________________________|           |
 ____________________________________________________________           V
 ```
 \* An NP problem that is also P is solvable in P time.
+
 ** An NP-Hard problem that is also NP-Complete is verifiable in P time.
+
 *** NP-Complete problems (all of which form a subset of NP-hard) might be. The rest of NP hard is not.
 
 
@@ -113,6 +115,8 @@ A search problem can be formulated as follows:
 - Path cost
 
 An example of this is the shortest path problem between two nodes in a weighted graph.
+
+[Good article here](http://how2examples.com/artificial-intelligence/tree-search)
 
 #### Comparing Strategies
 Search algorithm can be compared based on the followings:
@@ -167,12 +171,13 @@ Expands the node closest to the goal.
 - Complete: No
 - Time:  O(b ^ d )
 - Space: O(b ^ d )
-- Optimal: Yes (ONLY if cost = 1 per step)
+- Optimal: No
 
 ###### A*
 Expands the node on the least-cost solution path.
 
 ![a*](http://how2examples.com/artificial-intelligence/images/A-Star-Search.gif)
+
 
 The evaluation function (`f(n)`) takes in account of:
 - `g(n)`: path cost from the start node to node _n_.
@@ -186,6 +191,146 @@ So it makes sense to expand the node with lowest `f(n)`.
 - Time:  O(b ^ d )
 - Space: O(b ^ d )
 - Optimal: Yes (ONLY if cost = 1 per step)
+
+### Local Search
+Local search algorithms are based on the concept of **neighbourhood**. A neighbour is a search space that is _near_ to another, according to a **move operator**, i.e. bit-flip mutation.
+
+#### Hill Climbing Search Algorithm
+The hill-climbing search is a local search algorithm, that starting with a complete random solution, keeps moving towards _better_ neighbours until it cannot find a better one. The algorithm is only able to find local optima, which might or might not be the global optimum. On shoulders, it will just make random walks. Such algorithm is **not deterministic**, rather it depends on the random start.
+
+![HillClimbing](https://i.stack.imgur.com/HISbC.png)
+
+- Complete: No
+- Time:  O(∞) (Worst case scenario it could go forever!)
+- Space: O(b)
+- Optimal: No
+
+There are a few variants of this algorithm, such as the **Stochastic Hill Climb** (choose a random neighbour, and move if it's a better solution).
+
+#### Metaheuristics
+Metaheuristics are meta-algorithms that attempt to select the best algorithm for a given approach. In the field of local searches, they are particularly useful in escaping the local optima, and balancing the **exploration** and **exploitation** features of an algorithm. 
+
+Key components of metaheuristics:
+- Problem representation
+- Fitness function
+- Search/variations operators
+- Initial solution(s)
+- Search strategy
+
+A list of successful local search metaheuristics will now follow.
+
+##### Multiple restarts hill climbing
+**Multiple restarts hill climbing** is a meta-algorithm that runs many instances of the hill-climbing algorithm, and picks the closer to the goal state, increasing the chances of finding the global maximum.
+
+Pseudocode:
+```
+procedure Multiple restart hill-climbing
+begin
+    s = randomly generated solution
+    best = s
+    repeat
+        s = hill_climbing(s)
+        if evaluation(s) is better than evaluation(best)
+        	best = s
+        	s = randomly generated solution
+    until stopping-criteria satisfied
+    return best
+end
+```
+
+##### Iterated Local Search
+This meta-algorithm is a simple way of improving the hill climbing. Once a random solution is found, it performs a random permutation, and applies the hill climbing again. If the solution is deemed better, is stored. This keeps going until a stopping criterion is reached, such as the number of iterations, or a certain value is reached.
+
+Pseudocode:
+```
+procedure Iterated local search
+begin
+    s = randomly generated solution
+    s = hill-climbing(s)
+    best = s
+    repeat
+        s = perturb(s)
+        s = hill-climbing(s)
+        if evaluation(s) is better than evaluation(best)
+        	best = s
+    until stopping-criteria satisfied
+    return best
+end
+```
+
+##### Simulated Annealing
+Allows the algorithm to proceed towards worse solutions to favour **exploration** over **exploitation**.
+Usually the algorithm works like this: at each time step, the algorithm randomly selects a solution close to the current one, measures its quality, and then decides to move to it or to stay with the current solution based on either one of two probabilities between which it chooses on the basis of the fact that the new solution is better or worse than the current one. During the search, the temperature is progressively decreased from an initial positive value to zero and affects the two probabilities: at each step, the probability of moving to a better new solution is either kept to 1 or is changed towards a positive value; instead, the probability of moving to a worse new solution is progressively changed towards zero.
+In other words, while the state is _hot_ the algorithm is more likely to explore, while the more cool it gets, it becomes more likely select only a good solution, until it converges to a standard hill climbing at `temperature = 0`;
+
+![SimulatedAnnealing](https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif)
+
+```
+procedure simulated annealing
+begin
+    s = random solution
+    repeat for k = 0 through max_iterations
+      	T = temperature (k/max_iterations)
+        new_s = random neighbour 
+        if accept(evaluate(s), evaluate(new_s), T) > random(0,1)
+        	s = new_s
+    return s
+end
+
+procedure temperature (fraction)
+begin
+	return a temperature based on the fraction
+end
+
+procedure accept (s, new_s, T)
+begin
+	if new_s better than s
+    	return 1
+    else
+    	return exp(-(new_s - s) / T)
+end
+```
+
+This graph shows the results of an acceptance function given an `new_s` worse than `s`.
+The higher the temperature, the more likely the algorithm is to pick up a solution that to favour exploration of the space.
+
+![AcceptanceFunction](acceptance.png)
+
+##### Tabu Search
+**Tabu search** enhances the performance of **local search** by relaxing its basic rule. First, at each step worsening moves can be accepted if no improving move is available (like when stuck at a local optimum). In addition, **prohibitions** (_tabu_) are introduced to discourage the search from coming back to previously-visited solutions.
+
+![TabuSearch](https://www.globalsoftwaresupport.com/wp-content/uploads/2018/04/Untitled.png)
+
+Pseudocode:
+```
+procedure taboo search 
+begin
+    sBest = s0
+    bestCandidate = s0
+    tabuList = []
+    tabuList.push(s0)
+    loop 
+        sNeighborhood = getNeighbors(bestCandidate)
+        
+        for (sCandidate in sNeighborhood)
+            if ( (not tabuList.contains(sCandidate)) and (fitness(sCandidate) > fitness(bestCandidate)) )
+                bestCandidate = sCandidate
+            end
+        end
+        
+        if (fitness(bestCandidate) > fitness(sBest))
+            sBest = bestCandidate
+        end
+        
+        tabuList.push(bestCandidate)
+        
+        if (tabuList.size > maxTabuSize)
+            tabuList.removeFirst()
+        end
+    until stopping-criteria satisfied
+    return sBest
+end
+```
 
 ## Machine Learning
 
