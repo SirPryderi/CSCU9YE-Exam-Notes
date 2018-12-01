@@ -162,8 +162,17 @@ Best-first search algorithms expand the mode desirable node first.
 ###### Greedy search
 Expands the node closest to the goal.
 
+![GreedySearch](http://how2examples.com/artificial-intelligence/images/Greedy-Search.gif)
+
+- Complete: No
+- Time:  O(b ^ d )
+- Space: O(b ^ d )
+- Optimal: Yes (ONLY if cost = 1 per step)
+
 ###### A*
 Expands the node on the least-cost solution path.
+
+![a*](http://how2examples.com/artificial-intelligence/images/A-Star-Search.gif)
 
 The evaluation function (`f(n)`) takes in account of:
 - `g(n)`: path cost from the start node to node _n_.
