@@ -69,6 +69,8 @@ In mathematics and computer science an **optimisation problem** is the problem o
 
 Optimisation problems can be, depending on their variables, **continuous** and **discrete**.
 
+![Classification of optmisation algorithms](optimisation-taxonomy.svg)
+
 #### Heuristic Optimisation
 A heuristic is a technique designed for solving a problem quickly (**rule of thumb**), using problem-specific knowledge, where the traditional approach would be too slow, or wouldn't find a complete solution.
 
