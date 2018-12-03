@@ -26,6 +26,11 @@
         * [Iterated Local Search](#iterated-local-search)
         * [Simulated Annealing](#simulated-annealing)
         * [Tabu Search](#tabu-search)
+    * [Population-based Algorithms](#population-based-algorithms)
+      * [Evolutionary Algorithm](#evolutionary-algorithm)
+      * [Memetic Algorithms](#memetic-algorithms)
+      * [Other evolutionary algorithms](#other-evolutionary-algorithms)
+      * [Other population-based algorithms](#other-population-based-algorithms)
   * [Machine Learning](#machine-learning)
   * [Advanced Applications](#advanced-applications)
     * [Natural Language Processing](#natural-language-processing)
@@ -366,7 +371,29 @@ return best solution in p
 ```
 
 #### Memetic Algorithms
+**Memetic algorithms** are a combination of _genetic algorithms_ and local search operators. They are inspired from both the concept of Darwinian evolution and Dawkins' notion of _meme_. For this reason they are also called _Lamarckian_ or _Baldwinian_. They were found to be empirically faster than standard genetic algorithms, as they use problem-specific heuristics to make the evolutionary process more efficient.
 
+Pseudocode for a generic Memetic Algorithm:
+```
+Procedure Memetic Algorithm
+   Initialize: Generate an initial population;
+   while Stopping conditions are not satisfied do
+       Evaluate all individuals in the population.
+       Evolve a new population using stochastic search operators.
+       Select the subset of individuals, O{il}, that should undergo the individual improvement procedure.
+       for each individual in O{il} do
+           Perform individual learning using meme(s) with frequency or probability of f(il), for a period of t(il).
+           Proceed with Lamarckian or Baldwinian learning.
+       end for
+   end while
+   ```
+#### Other evolutionary algorithms
+- Evolution Strategies
+- Genetic Programming
+
+#### Other population-based algorithms
+- Ant colony optimisation
+- Particle swarm optimisation
 
 ## Machine Learning
 
