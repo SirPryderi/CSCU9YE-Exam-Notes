@@ -341,6 +341,33 @@ begin
 end
 ```
 
+### Population-based Algorithms
+While ad-hoc heuristics attempt to maximise the **exploitation** of the search space, **population-based algorithms** aim to maximise **exploration**.
+
+They generate a large amount of solutions and evaluate which one is the best.
+
+#### Evolutionary Algorithm
+Evolutionary algorithms are based on the process of **natural selection**. At the beginning they generate a great amount of diverse, solutions. They then get selected and permuted in order to find the best solution.
+
+Pseudo code of a generic evolutionary algorithm:
+```
+procedure evolutionary
+begin
+	p(0) = random population
+   t = 0
+   loop for t
+    	evaluate  p(t)
+        P' (t) = select(p(t)) # select parents
+        P'' (t) = variation(p'(t)) # apply variations
+        P(t+1) = replace(p(t), p''(t)) # replace population
+        t++
+    until stopping-criterion satisfied
+return best solution in p
+```
+
+#### Memetic Algorithms
+
+
 ## Machine Learning
 
 ## Advanced Applications
