@@ -396,6 +396,45 @@ Procedure Memetic Algorithm
 - Particle swarm optimisation
 
 ## Machine Learning
+Machine learning (ML) is the study of algorithms and mathematical models that computer systems use to progressively improve their performance on a specific task. 
+In other words, is the science of getting computer act without being explicitly programmed.
+
+Advantages:
+- No need to anticipate all possible situations
+- No need to manually update the design over time 
+- No need to manually design a specific algorithm
+
+Machine learning algorithms are classified in three main classes, according to their **task**:
+- **Classification**
+    - Identify to which category an object belongs to.
+- **Regression** 
+    - Predict a numerical value associated to an object.
+- **Clustering**
+    - Automatically organised similar objects into groups.
+
+There are also three type of learning, based on the **feedback**.
+- **Supervised learning**
+    - The learning data is presented with some input-output examples
+    - Useful for _classification_ and _regression_.
+- **Unsupervised learning**
+    - The learning data only contains inputs.
+    - Useful for _clustering_.
+- **Reinforcement learning**
+    - The algorithm learns from environmental feedbacks, such as punishments and rewards.
+    - Useful for _game playing_.
+
+### Decision Trees
+**Decision trees** are one of the simplest and most effective forms of machine learning techniques.
+
+![Example decision tree](https://cdn-images-1.medium.com/max/1200/0*Yclq0kqMAwCQcIV_.jpg)
+
+They are particularly useful with discrete input values and binary a classification as an output.
+
+Decision trees are **rule-based models**, hence, during the training phase, they aim to discover a rule from the data, and produce a set of branching decisions that end in a classification.
+
+The model tries to optimise the tree by arranging the decision in the most effective way (minimise the number of decision nodes). This is achieved by greedily using the decisions that reduce the information entropy the most.
+
+When the model is applied, the tree is traversed until a conclusion (_leaf_) is found.
 
 ## Advanced Applications
 
