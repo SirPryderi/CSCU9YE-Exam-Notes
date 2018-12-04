@@ -436,10 +436,58 @@ The model tries to optimise the tree by arranging the decision in the most effec
 
 When the model is applied, the tree is traversed until a conclusion (_leaf_) is found.
 
-## Advanced Applications
+### Clustering
+**Clustering** or **Cluster Analysis** is the task of grouping set of similar objects in a cluster, based on some similarity algorithm. This is done entirely by the machine learning algorithm.
 
-### Natural Language Processing
+![clustering](https://www.imperva.com/blog/wp-content/uploads/2017/07/k-means-clustering-on-spherical-data-1v2.png)
 
-### Robotics
+Clustering can either be **partitional** (one-dimensional) or **hierarchical** (tree-like).
 
-## Conclusions
+There are various ways of measuring **similarity** or **distance**:
+
+- Numerical Data
+    - Euclidean Distance
+    - Manhattan Distance
+- Categorical Data
+    - Hamming Distance
+    - Jacard Coefficient
+- Combined Data
+    - Weighted normalized distance
+
+Clustering techniques are used extensively for **marketing** purposes, for instance in order to understand which portion of a the population is more receptive towards buying certain items, or see which items are bought together (**market basked analysis**).
+
+Similarly, many internet applications use clustering to propose **similar** items and content to users/customers.
+
+It is also widely used in **computer vision**.
+
+#### Partitional Clustering
+Partitional clustering attempts to decompose the data set into a set of **disjoint clusters**. The criterion function that the clustering algorithm tries to minimize may emphasize the _local structure_ of the data or the _global structure_. Typically the global criteria involve minimizing some measure of dissimilarity in the samples within each cluster, while maximizing the dissimilarity of different clusters.
+
+##### K-Means Clustering
+`x̅` is the mean of a value `x` in a dataset with size `s`, and is obtained as:
+
+		x̅ = (Σ x) / s
+
+Clustering algorithms are able to find the mean of subsets that are called clusters, each with its mean. The number of cluster must be specified beforehand.
+
+The goal of the K-Means clustering algorithm is to minimise the sum of square of distance from all data points to their mean.
+
+![K-Means clustering iterations](https://dashee87.github.io/images/kmeans.gif)
+
+Algorithm:
+- Pick K different points from the data and assume they are the centres
+- Repeat until stabilisation:
+      - Assign each point to the closest cluster centre
+      - Calculate the centre of each cluster and move the centroids
+  
+The disadvantages of the k-means clustering are:
+- Assumes the clusters to be round
+- K needs to be given in advance
+- It assumes that all distances are equally important
+
+#### Hierarchical Clustering
+Hierarchical clustering allows not to commit to an exact number of cluster, conversely to the k-means clustering.
+
+![Hierarchical Clustering Steps](https://dashee87.github.io/images/hierarch.gif)
+
+Hierarchical clustering algorithms are usually **bottom-um** or **agglomerative**, meaning that the **dendrogram** or **tree** is built from the smallest possible clusters with just one item in them, and combining all the closest ones repeatedly until there is just one cluster containing all the dataset.
