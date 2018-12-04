@@ -32,10 +32,11 @@
       * [Other evolutionary algorithms](#other-evolutionary-algorithms)
       * [Other population-based algorithms](#other-population-based-algorithms)
   * [Machine Learning](#machine-learning)
-  * [Advanced Applications](#advanced-applications)
-    * [Natural Language Processing](#natural-language-processing)
-    * [Robotics](#robotics)
-  * [Conclusions](#conclusions)
+    * [Decision Trees](#decision-trees)
+    * [Clustering](#clustering)
+      * [Partitional Clustering](#partitional-clustering)
+        * [K-Means Clustering](#k-means-clustering)
+      * [Hierarchical Clustering](#hierarchical-clustering)
 
 ## What is Artificial Intelligence?
 
