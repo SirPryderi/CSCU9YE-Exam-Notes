@@ -42,7 +42,7 @@
 [Past Year Exams Answers](exam-attempt.md)
 
 ## Book
-For people with flexible morals: ![Artificial Intelligence – A Modern Approach](https://faculty.psau.edu.sa/filedownload/doc-7-pdf-a154ffbcec538a4161a406abf62f5b76-original.pdf)
+For people with flexible morals: [Artificial Intelligence – A Modern Approach](https://faculty.psau.edu.sa/filedownload/doc-7-pdf-a154ffbcec538a4161a406abf62f5b76-original.pdf)
 
 ## What is Artificial Intelligence?
 
