@@ -86,7 +86,63 @@ consecutive numbers indicating the sequence of expansion.
 ![Diagram](exam-attempt-diagram.svg)
 
 Note that if the if the algorithm wasn't excluding duplicates, it would branch twice at each node. I added other two steps, that were enough to find a solution.
+
 Question 2
 -----------------
+> (a) In the context of local search and evolutionary algorithms, briefly describe:
 
-> Cyka Blyat
+> What is a search space? Give an example of a search space.
+
+The search space is the set or domain where a search algorithm will search for solutions. They can be either finite or infinite.
+
+The diagram used above is a subset of the search space.
+
+Another examples could be:
+- A string, when searching for a character
+- All possible moves a chess piece can do
+
+> What is a neighbourhood? Give an example of a neighbourhood.
+
+A neighbourhood is the set of states that are _nearby_ the current state, according to a given distance function. 
+
+Taking the diagram above as an example, the neighbourhood of the initial node, are the first two nodes to be expanded, so all the nodes that are _one action_ away.
+
+Other examples could be:
+- The Hamming distance for strings
+- Swap or insert for permutations (remember the rucksack?)
+
+> (b) As the logistics manager in a supermarket, you need to coordinate the
+home delivery of shopping baskets to 10 clients. Consider that you have
+a single van and the 10 shopping baskets fit in it. You have the
+addresses of the 10 clients. Your job is to deliver all the orders and
+return to your base. Formulate this as an optimisation problem
+indicating:
+
+> How will you encode a solution to the problem and how will this be interpreted?
+
+(This problem is suspiciously similar to the Travelling Salesman's, masked like the Vehicle Routing's.)
+I would encode the solution of the problem as an array of addresses or coordinates. This will be read by the driver, so that the first address in the list will be served first, thus indicating the order in which each location should be reached.
+
+> What will be the fitness function and how will you implement it?
+
+The fitness function will be the total distance that the van has to travel to reach all the locations and then travel back to the supermarket.
+
+> (c) Consider the data below for training a cleaning robot. The robot needs
+to decide to which rooms to go for collecting recycled paper. Assume
+that an indication of the information gain of each attribute is given by:
+Role = 0.66, Floor = 0.06, Subject = 0.0, Size = 0.06
+
+> Construct the smallest possible decision tree (in terms of the
+number of attributes required) to solve this classification task given
+the information you have. Label the non-terminal nodes with the
+attributes, and the edges with attribute values. For each terminal
+node (leaf) of the tree indicate the examples classified.
+
+![table](exam-attempt-table.png)
+
+![Diagram 2](exam-attempt-diagram2.svg)
+
+> Is this the only tree you can construct of this size? Justify your
+answer.
+
+No, other trees could be built, changing the second attribute (floor) with either subject or size. But this will require additional nodes before the goal state is reached.
