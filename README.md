@@ -58,11 +58,23 @@ The last definition is the one that is one that is currently recognised.
 A **problem** has a **goal** and a set of allowed **actions** to achieve it
 A **solution** is a sequence of allowed actions that achieves a problem's goal.
 
-### Rational Agent
-A **rational agent** is something that, for a specific problem, **acts rationally**, i.e. does the action that **maximise goal achievement**. This does not necessarily include rational thinking.
+### Intelligence, agents and environments
+An **agent** is any entity capable of perceiving through **sensors** and acting upon the environment through **actuators**.
+
+A **rational agent** is an agent that, for a specific problem, **acts rationally**, i.e. does the action that is expected to **maximise the performance measure**. This does not necessarily include rational thinking.
+
+The **Task environment** is a formal description of the the problem _problem_ for which the agents are the _solutions_. It is divided in **Performance**, **Environment**, **Actuators**, **Sensors** (**PEAS**!).
+
+There are **7 properties** of for the task environments:
+1. **Fully-Observable** vs **Partially-Observable** — weather the agent's sensors give access to the complete state of the environment at each point in time
+2. **Single-Agent** vs **Multiple-Agent** — whether there are other agents in the environment that should be considered as such (and not mere objects)
+3. **Deterministic** vs **Stochastic** — in a deterministic environment the following state is entirely dependant on the previous state
+4. **Episodic** vs **Sequential** — In an episodic environment, the decision taken in each episode does not affect the next, it is otherwise sequential
+5. **Static** vs **Dynamic** — A dynamic environment can change without the intervention of the agent
+6. **Discrete** vs **Continuous** – In a discrete environment there is a finite number of distinct states (like in chess)
+7. **Known** vs **Unknown** – In a known environment all the rules are known _a priori_. This is different from the knowledge of the environment (observability)
 
 ## Search
-
 Search in computer science can be intended as follow:
 
 1. Search for stored data
@@ -115,23 +127,22 @@ A **constructive heuristic** is an algorithm that starts with an empty solution,
 A **local search** algorithm starts from a complete solution, and tries to improve the current solution by via  local changes.
 
 ### Tree Search
-A search problem can be mapped as as a tree of **state spaces** joined by actions. The tree root is the initial state. This allows the traversal of the tree using a search algorithm, that finds a solution to the problem. Hence, a **solution** is a sequence of actions (a plan) that reaches the **goal state**.
+A search problem can be mapped as as a tree of **state spaces** joined by actions. The tree root is the initial state. This allows the traversal of the tree using a search algorithm, that finds a solution to the problem. Hence, a **solution** to a problem is an **action sequence** that leads from the *initial state* to a *goal state*. Solution quality is measured by the *path cost function*, and an **optimal solution** has the lowest path cost among all solutions.
+
+An example of this is the shortest path problem between two nodes in a weighted graph.
+
+[If you have spare time, read this.](http://how2examples.com/artificial-intelligence/tree-search)
 
 A **state space** contains:
 - **The world state** ─ set of every detail of the problem
 - **Search state** ─ set of details needed for planning
 
-A search problem can be formulated as follows:
-- (states)(???)
-- Initial state
-- Actions
-- Transition Model
-- Goal test
-- Path cost
-
-An example of this is the shortest path problem between two nodes in a weighted graph.
-
-[Good article here](http://how2examples.com/artificial-intelligence/tree-search)
+A problem can be defined formally in **5 components**:
+1. **Initial state** – The initial state of the environment
+2. **Actions** — All the possible actions available to the agent
+3. **Transition Model** — A function that given a state `s` and an action `a` returns a new state
+4. **Goal test** – A function that determines if the current state is the goals state
+5. **Path cost** – A function that determines the cost between two states
 
 #### Comparing Strategies
 Search algorithm can be compared based on the followings:
