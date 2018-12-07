@@ -75,6 +75,17 @@ from all states.
 6. States
     - The states are all the possible combinations of the tiles 
 
+> Draw the search tree that would result from expanding 6 nodes
+(including the start) of the state-space using a Depth-First-Search
+approach that avoids revisiting states. The actions should be
+considered in the order (R, L, U, D). As nodes of the tree, draw the
+state as the 2x2 board with the specific configuration. Label the
+edges with the action executed. Also enumerate each node with
+consecutive numbers indicating the sequence of expansion.
+
+![Diagram](exam-attempt-diagram.svg)
+
+Note that if the if the algorithm wasn't excluding duplicates, it would branch twice at each node. I added other two steps, that were enough to find a solution.
 Question 2
 -----------------
 
