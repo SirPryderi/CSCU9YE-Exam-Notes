@@ -1,3 +1,6 @@
+2015 Exam
+=========
+
 Question 1
 ---------------
 
@@ -132,13 +135,13 @@ to decide to which rooms to go for collecting recycled paper. Assume
 that an indication of the information gain of each attribute is given by:
 Role = 0.66, Floor = 0.06, Subject = 0.0, Size = 0.06
 
+![table](exam-attempt-table.png)
+
 > Construct the smallest possible decision tree (in terms of the
 number of attributes required) to solve this classification task given
 the information you have. Label the non-terminal nodes with the
 attributes, and the edges with attribute values. For each terminal
 node (leaf) of the tree indicate the examples classified.
-
-![table](exam-attempt-table.png)
 
 ![Diagram 2](exam-attempt-diagram2.svg)
 
@@ -146,3 +149,132 @@ node (leaf) of the tree indicate the examples classified.
 answer.
 
 No, other trees could be built, changing the second attribute (floor) with either subject or size. But this will require additional nodes before the goal state is reached.
+
+2008 Exam
+=========
+This is a fairly old exam I found, some of the contents might not be in the course any more.
+
+Question 1
+---------------
+
+> Imagine you are in an area of New York with a grid road system. Every
+intersection has three choices: left, right, straight on (you never turn back). You
+are looking for the Empire State Building, which you know is just two blocks
+from where you are, but you don’t know which direction it is in.
+
+> Represent your current location as a single node at the root of a tree and
+then add the next two levels of the search tree to your diagram, labelling
+the arcs but not the nodes. Then pick one node and label it as the goal.
+
+![Map](exam-attempt-diagram3.svg)
+
+> You choose to make a depth first search of the area until you find the
+building. Refer to your diagram and say how many arcs of the tree you
+need to traverse before you reach your goal.
+
+A depth-first algorithm would first visit N, N-N, N-E, N-W, E, E-N, E-E, and finally the E-S node, which is the goal. This takes 8 iterations of the algorithm to find the solution.
+
+> Now repeat the process from the part above, but use a breadth first
+search this time.
+
+A breadth-first algorithm would first visit N, E, S, W, then, N-N, NE, N-W, E-N, E-E, and finally E-S, for a total of 10 iterations.
+
+> In general, with longer search paths, which of the two methods listed
+above would be most memory efficient? There is a potential problem in
+using depth first search – what is it and what other method could be used
+to avoid it? Why does the other method avoid the problem?
+
+Depth-first search is more memory efficient, because the space complexity is function of the depth only (`O(d)`). Breadth-first algorithms space complexity scales exponentially (`O(b^(d+1))`).
+
+Depth-first algorithms can continue to expand forever when facing a recursive or infinitely deep three. As a matter of fact, their worst case time complexity is `O(∞)`.  Breadth-first algorithms are not vulnerable to this because they prioritise exploring the tree horizontally and hence are guaranteed to find a solution, as they won't proceed in an infinite deep pitfall.
+
+> Suggest one improvement to the search algorithm that could be made to
+reduce the number of nodes in the tree.
+
+To reduce the number of nodes in the tree one could have a list of visited nodes, so that movements that bring to the same place (e.g. N-W, W-N) are not added to the tree.
+
+> Imagine you wanted to try to use a genetic algorithm (GA) to search for
+the fastest route to New York landmarks instead of using a search tree.
+Describe the concepts behind how a GA works and explain how it might
+be used in this case. What extra information would you need during your
+search to allow a GA to work?
+
+Genetic algorithms are population-based algorithms that work by generation and selection of solution. They are inspired from Darwinian natural selection.
+
+They start from a population of random solutions, the fittest are selected, bred, and a the same process is repeated on the newer generation, until a certain criterion is reached.
+
+In this case, a set of various random solutions indicating the order in which to visit the sights will be generated, and the GA will try to find the shortest path between all of them. A threshold distance, or a set number of generation can be used as stopping criterion.
+
+In order to allow the GA to work, a function to evaluate the fitness of the solution must be implemented. In order to this, either the distance or the time to travel between each sight is required. Either a table with all the distances, or the exact locations (on the grid) of each building, and the distance might be computed using the Manhattan (!) distance function.
+
+Question 2
+---------------
+This question ask about inference and other topics that are probably not covered.
+
+Question 3
+---------------
+> Define the following types of learning: supervised, unsupervised and
+reinforcement learning, each in terms of the feedback required from the
+environment
+
+- **Supervised Learning**: the algorithm is provided labelled data and it is supposed to find learn to predict the outputs, given the inputs (classification, regression).
+- **Unsupervised Learning**: the algorithm is provided just a set of data. This is usually done for grouping similar items together and creating taxonomies (clustering).
+- **Reinforcement learning**: The algorithm is provided a positive/negative feedback for each action. Particularly used in game-theory problems.
+
+> A neural network usually contains neurons, synapses, and an activation
+function. Explain the role of each of these three ingredients.
+
+- **Neurons** are the building block of neural networks. Each node receives inputs and output synapses. The input values is given to the activation function, and the result is propagated to the outputs.
+- **Synapses** are the links between neurons. They have a weight, that is adjusted during the learning process. This allows to tweak the value of the outputs given the inputs.
+- **Activation functions** are non-linear function that trigger the output of the neuron, given the inputs. They usually have a sigmoid shape (logistic function).
+
+> The Hebb rule is a simple associative network learning rule. Explain
+how it works between two neurons.
+
+"When an axon of cell A is near enough to excite a cell B and repeatedly or
+persistently takes part in firing it, some growth process or metabolic change
+takes place on one or both cells such that A’s efficiency as one of the cells
+firing B, is increased."
+
+OR IN ENGLISH:
+
+"If two neurons on either side of a synapse (connection) are activated
+simultaneously (i.e. synchronously), then the strength of that synapse is
+selectively increased."
+
+-------------------------------------------------------
+
+> Imagine we want to teach a neural network to detect fraudulent
+insurance claims. We have chosen a multi-layer perceptron (MLP) for
+the job:
+
+> We need to collect data representing the input and the output of
+the MLP. Suggest an example input variable (use your
+imagination) and say what the output would be.
+
+Possible input variables could be:
+- Age of the claimer
+- Number of claims made in the past
+- Amount
+- Type of incident
+
+While the output could either be:
+- Fraudulent/legitimate hard threshold
+- Or a percentage of the likeliness of the claim being fraudulent 
+
+> Name the three different types of neuron found in a MLP.
+
+According to where they are placed, neurons can be part of the **input layer**, **hidden layer**, or **output layer**.
+
+> What do we mean by the ‘error’ made by a MLP during training?
+
+I have no flying clue.
+
+> To what use is the error put during training?
+
+I suppose to fix the the weights during back propagation? Well, I don't care, this ain't gonna be in the exams anyway.
+
+> What do we mean when we say that MLPs can suffer from over
+training, and what can we do to avoid this problem?
+
+Over training, or **overfitting** is when a machine learning becomes extremely good at predicting the values in the dataset provided, although that doesn't reflect the real world. To do that, the dataset is split between training and testing, thus giving more precise accuracy scores.
