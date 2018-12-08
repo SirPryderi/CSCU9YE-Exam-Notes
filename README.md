@@ -69,7 +69,13 @@ An **agent** is any entity capable of perceiving through **sensors** and acting 
 
 A **rational agent** is an agent that, for a specific problem, **acts rationally**, i.e. does the action that is expected to **maximise the performance measure**. This does not necessarily include rational thinking.
 
-The **Task environment** is a formal description of the the problem _problem_ for which the agents are the _solutions_. It is divided in **Performance**, **Environment**, **Actuators**, **Sensors** (**PEAS**!).
+A rational agent can belong to one of these categories:
+- **Simple reflex based agent** – acts based only on the current percept
+- **Model-based reflex agent** — acts based on the current percept and the internal state of the agent
+- **Goal based agent** — acts based on an action that will bring it closer to the goal
+- **Utility based agent** — acts on maximising the (expected) utility (happiness)
+
+The **task environment** is a formal description of the the problem _problem_ for which the agents are the _solutions_. It is divided in **Performance**, **Environment**, **Actuators**, **Sensors** (**PEAS**!).
 
 There are **7 properties** of for the task environments:
 1. **Fully-Observable** vs **Partially-Observable** — weather the agent's sensors give access to the complete state of the environment at each point in time
@@ -79,6 +85,13 @@ There are **7 properties** of for the task environments:
 5. **Static** vs **Dynamic** — A dynamic environment can change without the intervention of the agent
 6. **Discrete** vs **Continuous** – In a discrete environment there is a finite number of distinct states (like in chess)
 7. **Known** vs **Unknown** – In a known environment all the rules are known _a priori_. This is different from the knowledge of the environment (observability)
+
+The environment/sate itself can be represented in 3 ways:
+- **Atomic** – each state is just a black box
+- **Factored** – each state is a box associated values (an object)
+- **Structured** – each state is made of many objects and their relationships
+
+![Spectrum of representations](https://images.slideplayer.com/38/10815909/slides/slide_3.jpg)
 
 ## Search
 Search in computer science can be intended as follow:
@@ -152,10 +165,10 @@ A problem can be defined formally in **5 components**:
 
 #### Comparing Strategies
 Search algorithm can be compared based on the followings:
-- completeness: does it always find a solution if one exists?
-- time complexity: number of nodes generated
-- space complexity: maximum number of nodes in memory
-- optimality: does it always find a least-cost solution?
+- **completeness**: does it always find a solution if one exists?
+- **time complexity**: number of nodes generated
+- **space complexity**: maximum number of nodes in memory
+- **optimality**: does it always find a least-cost solution?
 
 #### Uninformed Search Strategies
 **Uniformed search strategies** also called **blind search strategies** use only the information available in the problem definition.
